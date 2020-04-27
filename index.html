@@ -3,116 +3,14 @@
 <head>
   <meta charset='utf-8'>
   <title>ブロック崩しゲーム</title>
-
-  <!-- リファクタリング時に移植 -->
-  <style>
-    *{padding: 0; margin: 0;}
-    canvas{background: #eee; display: block; margin: 0 auto;}
-  </style>
+  <script src="https://kit.fontawesome.com/55741b37c8.js" crossorigin="anonymous"></script>
+  <link rel='stylesheet' type='text/css' href='stylesheets/normalize.css'>
+  <link rel="stylesheet" type="text/css" href="stylesheets/base.css">
 </head>
 
 <body>
   <canvas id='myCanvas' width='480' height='320'></canvas>
-  <script>
-    // canvasを2D描画コンテキストに設定
-    let canvas = document.getElementById('myCanvas');
-    let ctx = canvas.getContext('2d');
-
-    // ボールの大きさ
-    let ballRadius = 10;
-
-    // Ballの初期位置
-    let x = canvas.width / 2;
-    let y = canvas.height - 30;
-
-    // ボールの運動量変化
-    let dx = 2;
-    let dy = -2;
-
-    // パドルの位置
-    let paddleHeight = 10;
-    let paddleWidth = 75;
-    let paddleX = (canvas.width - paddleWidth) / 2
-
-    // キー操作
-    let rightPressed = false;
-    let leftPressed = false;
-
-    // ゲームスタート
-    let interval = setInterval(draw, 10);
-
-    document.addEventListener('keydown', keyDownHandler, false);
-    document.addEventListener('keyup', keyUpHandler, false);
-    // キー入力の認識
-    function keyDownHandler(e){
-      if(e.key == 'Right' || e.key == 'ArrowRight'){
-        rightPressed = true;
-      } else if(e.key == 'Left' || e.key == 'ArrowLeft'){
-        leftPressed = true;
-      }
-    }
-    function keyUpHandler(e){
-      if(e.key == 'Right' || e.key == 'ArrowRight'){
-        rightPressed = false;
-      } else if(e.key == 'Left' || e.key == 'ArrowLeft'){
-        leftPressed = false;
-      }
-    }
-
-    // ボールを表示
-    function drawBall(){
-      ctx.beginPath();
-        ctx.arc(x, y, ballRadius, 0, Math.PI*2);
-        ctx.fillStyle = '#0095DD';
-        ctx.fill()
-      ctx.closePath();
-    }
-
-    // パドルを表示
-    function drawPaddle(){
-      ctx.beginPath();
-        ctx.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
-        ctx.fillStyle = '#0095DD';
-        ctx.fill();
-      ctx.closePath();
-    }
-
-    // 画面描写
-    function draw(){
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      drawBall()
-      drawPaddle()
-
-      // ボールの移動
-      if(y + dy <= ballRadius){
-        dy = -dy;
-      } else if(y + dy >= canvas.height - ballRadius){
-        if(x > paddleX && x < paddleX + paddleWidth){
-          dy = -dy;
-        } else {
-          alert('Game over!');
-          document.location.reload();
-          clearInterval(interval)
-        }
-      } else if(x + dx <= ballRadius || x + dx >= canvas.width - ballRadius){
-        dx = -dx;
-
-      }　else {
-        x += dx;
-        y += dy;
-      }
-
-      // パドルの移動
-      if(rightPressed && paddleX < canvas.width - paddleWidth){
-        paddleX += 7;
-      } else if(leftPressed && paddleX > 0){
-        paddleX -= 7;
-      }
-    }
-
-
-    
-  </script>
+  <script src='javascripts/game.js'></script>
 </body>
 
 </html>
