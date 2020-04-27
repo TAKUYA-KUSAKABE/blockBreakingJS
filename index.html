@@ -14,7 +14,32 @@
 <body>
   <canvas id='myCanvas' width='480' height='320'></canvas>
   <script>
+    // canvasを2D描画コンテキストに設定
+    let canvas = document.getElementById('myCanvas');
+    let ctx = canvas.getContext('2d');
 
+    // Ballの初期位置
+    let x = canvas.width / 2;
+    let y = canvas.height - 30;
+    // ボールの運動量変化
+    let dx = 2;
+    let dy = -2;
+
+
+    // ボールを動かす
+    function draw(){
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.beginPath();
+        ctx.arc(x, y, 10, 0, Math.PI*2);
+        ctx.fillStyle = '#0095DD';
+        ctx.fill()
+      ctx.closePath();
+
+      // ボールの位置を修正
+      x += dx;
+      y += dy;
+    }
+    setInterval(draw, 10)
   </script>
 </body>
 
