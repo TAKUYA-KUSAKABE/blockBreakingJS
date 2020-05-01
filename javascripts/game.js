@@ -23,7 +23,6 @@ function draw(){
     if(x >= paddleX - paddleSafeArea && x <= paddleX + paddleWidth){
       if(x >= paddleMidPoint - ballRadius && x <= paddleMidPoint + ballRadius){
         dy = -dy * 1.5;
-        console.log('hit!')
       } else {
         dy = dy0;
       }
