@@ -18,7 +18,7 @@ for(let i=0; i < blockColumnCount; i++){
 
 // ブロックの描写
 function drawblocks(){
-  // 二次元配列を作成し、x, yの値を適宜選択する
+  // 二次元配列のx, yの値を適宜選択する
   for(let i=0; i < blockColumnCount; i++){
     for(let k=0; k < blockRowCount; k++){
       if(blocks[i][k].status == 1){
