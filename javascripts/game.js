@@ -9,6 +9,7 @@ function draw(){
   drawblocks();
   drawBall();
   drawPaddle();
+  collisionDetection();
 
   // ボールの移動
   if(y + dy <= ballRadius){

@@ -28,4 +28,16 @@ function drawblocks(){
   }
 }
 
-
+function collisionDetection(){
+  for(let i=0; i < blockColumnCount; i++){
+    for(let k=0; k < blockRowCount; k++){
+      let block = blocks[i][k]
+      // ブロックは左上が原点
+      // あたり判定はボールの位置(x, y)がブロックの範囲内に収まるか否かで判定する
+      if(x >= block.x && x <= block.x + blockWidth && y >= block.y && y <= block.y + blockHeight){
+        dy = -dy;
+        console.log('block hit!')
+      }
+    }
+  }
+}
