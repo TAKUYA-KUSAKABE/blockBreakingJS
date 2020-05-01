@@ -41,13 +41,16 @@ function collisionDetection(){
     for(let k=0; k < blockRowCount; k++){
       let block = blocks[i][k]
       if(block.status == 1){
-
         // ブロックは左上が原点
         // あたり判定はボールの位置(x, y)がブロックの範囲内に収まるか否かで判定する
         if(x >= block.x && x <= block.x + blockWidth && y >= block.y && y <= block.y + blockHeight){
           dy = -dy;
           // 衝突後ブロックを消す
           block.status = 0;
+          score++;
+          if(score == blockRowCount * blockColumnCount){
+            alert('You Win!!')
+          }
         }
       }
     }
