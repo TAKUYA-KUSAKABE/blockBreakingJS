@@ -14,9 +14,18 @@ function draw(){
   if(y + dy <= ballRadius){
     dy = -dy;
   } else if(y + dy >= canvas.height - ballRadius){
+    // パドルセーフエリアの延長
+    const paddleSafeArea = 6.5
+    // パドルの中心
+    const paddleMidPoint = paddleX + paddleWidth / 2
     // ボールがパドル上にある場合はセーフ
-    if(x >= paddleX && x <= paddleX + paddleWidth){
-      dy = -dy;
+    if(x >= paddleX - paddleSafeArea && x <= paddleX + paddleWidth){
+      if(x >= paddleMidPoint - ballRadius && x <= paddleMidPoint + ballRadius){
+        dy = -dy * 1.5;
+        console.log('hit!')
+      } else {
+        dy = dy0;
+      }
     } else {
       alert('Game over!');
       clearInterval(interval)

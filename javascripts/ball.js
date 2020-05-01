@@ -6,6 +6,7 @@ let x = canvas.width / 2;
 let y = canvas.height - 30;
 
 // ボールの運動量変化
+let dy0 = -2;
 let dx = 2;
 let dy = -2;
 

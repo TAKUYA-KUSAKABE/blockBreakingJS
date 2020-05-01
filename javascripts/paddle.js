@@ -10,4 +10,12 @@ function drawPaddle(){
     ctx.fillStyle = '#0095DD';
     ctx.fill();
   ctx.closePath();
+
+  // ボールの加速エリア
+  ctx.beginPath();
+    ctx.rect(paddleX+paddleWidth/2-ballRadius, canvas.height - paddleHeight, ballRadius*2, paddleHeight);
+    ctx.fillStyle = 'red';
+    ctx.fill();
+  ctx.closePath();
+
 }
