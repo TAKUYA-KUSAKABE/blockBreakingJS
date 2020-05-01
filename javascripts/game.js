@@ -1,8 +1,10 @@
 // ゲームスタート
-let interval = setInterval(draw, 10);
+let frameTime = 10
+let interval = setInterval(draw, frameTime);
 
 // 画面描写
 function draw(){
+  // ボールやパドルの軌跡を消す
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   drawblocks();
   drawBall();
@@ -12,16 +14,15 @@ function draw(){
   if(y + dy <= ballRadius){
     dy = -dy;
   } else if(y + dy >= canvas.height - ballRadius){
-    if(x > paddleX && x < paddleX + paddleWidth){
+    // ボールがパドル上にある場合はセーフ
+    if(x >= paddleX && x <= paddleX + paddleWidth){
       dy = -dy;
     } else {
       alert('Game over!');
-      // document.location.reload();
       clearInterval(interval)
     }
   } else if(x + dx <= ballRadius || x + dx >= canvas.width - ballRadius){
     dx = -dx;
-    
   } else {
     x += dx;
     y += dy;
