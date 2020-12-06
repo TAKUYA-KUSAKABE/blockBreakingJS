@@ -2,13 +2,36 @@
 <html>
 <head>
   <meta charset='utf-8'>
-  <title>ブロック崩しゲーム</title>
+  <title>ブロック崩しゲーム Feature!!!</title>
   <script src="https://kit.fontawesome.com/55741b37c8.js" crossorigin="anonymous"></script>
   <link rel='stylesheet' type='text/css' href='stylesheets/normalize.css'>
   <link rel="stylesheet" type="text/css" href="stylesheets/base.css">
 </head>
 
 <body>
+  <div>
+    <h1>Netlifyの投稿フォーム</h1>
+    <form name="contact" method="POST" data-netlify="true">
+      <p>
+        <label>Your Name: <input type="text" name="name" /></label>   
+      </p>
+      <p>
+        <label>Your Email: <input type="email" name="email" /></label>
+      </p>
+      <p>
+        <label>Your Role: <select name="role[]" multiple>
+          <option value="leader">Leader</option>
+          <option value="follower">Follower</option>
+        </select></label>
+      </p>
+      <p>
+        <label>Message: <textarea name="message"></textarea></label>
+      </p>
+      <p>
+        <button type="submit">Send</button>
+      </p>
+    </form>
+  </div>
   <canvas id='myCanvas' width='480' height='620'></canvas>
   <script src='javascripts/canvas.js'></script>
   <script src='javascripts/ball.js'></script>
